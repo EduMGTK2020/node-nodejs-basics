@@ -1,12 +1,11 @@
-import path from 'path';
 import { writeFile } from 'fs/promises';
 
 const fileName = 'fresh.txt';
 const fileContent = 'I am fresh and young';
-const filesFolder = 'src/fs/files';
+const filesFolder = 'files';
 
 const create = async () => {
-    const filePath = path.resolve(filesFolder, fileName);
+    const filePath = new URL(`${filesFolder}/${fileName}`, import.meta.url);
     try {
         await writeFile(filePath, fileContent, { flag: 'wx' });  
     } 
