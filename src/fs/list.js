@@ -1,18 +1,14 @@
-import { readdir } from "fs/promises";
+import { readdir } from 'fs/promises';
 
-const getAbsolutePath = (path) => {
-  return new URL(path, import.meta.url);
-};
-
-const filesFolder = "files";
-const fileFolderPath = getAbsolutePath(filesFolder);
+const filesFolder = 'files';
+const fileFolderPath = new URL(filesFolder, import.meta.url);
 
 const list = async () => {
   try {
     const listFiles = await readdir(fileFolderPath);
     console.log(listFiles);
   } catch {
-    throw new Error("FS operation failed");
+    throw new Error('FS operation failed');
   }
 };
 

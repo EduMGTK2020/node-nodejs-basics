@@ -1,13 +1,10 @@
 import { fork } from 'child_process';
 
-const getAbsolutePath = (path) => {
-  return new URL(path, import.meta.url);
-};
-
 const filesFolder = 'files';
 const fileChildProcess = 'script.js';
-const fileChildProcessPath = getAbsolutePath(
-  `${filesFolder}/${fileChildProcess}`
+const fileChildProcessPath = new URL(
+  `${filesFolder}/${fileChildProcess}`,
+  import.meta.url
 );
 
 const spawnChildProcess = async (args) => {

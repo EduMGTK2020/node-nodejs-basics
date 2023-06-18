@@ -1,7 +1,7 @@
-import { readdir, stat, mkdir, copyFile } from "fs/promises";
+import { readdir, stat, mkdir, copyFile } from 'fs/promises';
 
-const filesFolder = "files";
-const filesCopyFolder = "files_copy";
+const filesFolder = 'files';
+const filesCopyFolder = 'files_copy';
 
 const pathExist = async (path) => {
   try {
@@ -16,12 +16,12 @@ const getAbsolutePath = (path) => {
   return new URL(path, import.meta.url);
 };
 
-const copy = async () => {
-  const filesOriginPath = getAbsolutePath(filesFolder);
-  const filesCopyPath = getAbsolutePath(filesCopyFolder);
+const filesOriginPath = getAbsolutePath(filesFolder);
+const filesCopyPath = getAbsolutePath(filesCopyFolder);
 
+const copy = async () => {
   if (!(await pathExist(filesOriginPath)) || (await pathExist(filesCopyPath))) {
-    throw new Error("FS operation failed");
+    throw new Error('FS operation failed');
   } else {
     const [filesNameToCopy] = await Promise.all([
       readdir(filesOriginPath),

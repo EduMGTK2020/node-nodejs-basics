@@ -1,17 +1,16 @@
-const rssPrefix = "RSS_";
+const rssPrefix = 'RSS_';
 
 const parseEnv = () => {
-
   const envVarsWithRSS = Object.entries(process.env).filter((envVar) => {
-    if (envVar[0].startsWith(rssPrefix)) return true;
+    return envVar[0].startsWith(rssPrefix);
   });
 
   const listRSSEnvVars = envVarsWithRSS
     .map((envVar) => {
       return `${envVar[0]}=${envVar[1]}`;
     })
-    .join("; ");
-    
+    .join('; ');
+
   console.log(listRSSEnvVars);
 };
 
